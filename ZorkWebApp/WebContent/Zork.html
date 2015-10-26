@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function Zork(){
+v = document.getElementById("command").value;
+//validate1(v,"1");
+switch (v){
+case "1": {
+//	validate1(v,"2");
+	document.getElementById("message").innerHTML = "<b>You're in a foyer and there's a dead scorpion on the ground. You can go: press 2 for north</b>"; 
+	change(v);
+	document.getElementById("moves").value += v+" into the foyer\n";
+	break;}
+case "2": {
+//	validate3(v,"1","3","4");
+	document.getElementById("message").innerHTML = "<b>You're in a front room and there's a piano in the corner. You can go: press 1 for south, 3 for west, or 4 for east</b>";
+	change(v);
+	document.getElementById("moves").value += v+" into the front room\n";
+	break;}
+case "3": {
+	document.getElementById("message").innerHTML = "<b>You're in a library and there are spiders everywhere. You can go: press 2 for east or 7 for north</b>";
+	change(v);
+	document.getElementById("moves").value += v+ " into the library\n";
+	break;}
+case "4": {
+	document.getElementById("message").innerHTML = "<b>You're in a kitchen and bats hang from the ceiling. You can go: press 2 for west or 5 for north</b>";
+	change(v);
+	document.getElementById("moves").value += v+" into the kitchen\n";
+	break;}
+case "5": {
+	document.getElementById("message").innerHTML = "<b>You're in a dining room. There's dust everywhere and a box sitting on the table. You can go: press 4 for south</b>";
+	change(v);
+	document.getElementById("moves").value += v+" into the dining room\n";
+	break;}
+case "6": {
+	document.getElementById("message").innerHTML = "<b>You're in a vault and there's a treasure chest on the floor. You can go: press 7 for west</b>";
+	change(v);
+	document.getElementById("moves").value += v+ " into the vault\n";
+	break;}
+case "7": {
+	document.getElementById("message").innerHTML = "<b>You're in a parlor and there are skeletons running amok. You can go: press 3 for south or 6 for east</b>";
+	change(v);
+	document.getElementById("moves").value += v+ " into the parlor\n";
+	break;}
+default: alert("Hah! Loser!");
+
+}
+document.getElementById("command").value="";
+document.getElementById("command").focus();
+/* document.getElementById("message").innerHTML = "<b>You said: " + v + "</b>"
+document.getElementById("parlor").style.backgroundColor = "blue";
+moves = document.getElementById("moves").text
+document.getElementById("moves").value = "\\\rYour next move" */
+}
+
+function change(inp){
+	inp=parseInt(inp);
+	var arr=["","foyer","front","library","kitchen","diningRoom","vault","parlor"];
+	var i=1;
+	for(i;i<8;i++){
+	if (i==inp) document.getElementById(arr[i]).style.backgroundColor = "blue";
+	else document.getElementById(arr[i]).style.backgroundColor = "white";
+	}
+}
+
+function validate1(in1, par){
+	if (in1.equals(par)) {}
+	else {
+		alert("Can't go there!");
+		break;
+	}
+}
+function validate2(in1, par,par2){
+	if (in1.equals(par)||in1.equals(par2)) {}
+	else {
+		alert("Can't go there!");
+		break;
+	}
+}
+function validate3(in1, par,par2,par3){
+	if (in1.equals(par)||in1.equals(par2)||in1.equals(par3)) {}
+	else {
+		alert("Can't go there!");
+		break;
+	}
+}
+
+
+</script>
+</head>
+<body>
+<h1>Welcome to Zork</h1>
+<table border="1" style="width:400px">
+<tr><td border="1" id="parlor">&nbsp;</td><td border="1" id="vault">&nbsp;</td><td border="1" id="diningRoom">&nbsp;</td></tr>
+<tr><td border="1" id="library">&nbsp;</td><td border="1" id="front">&nbsp;</td><td border="1" id="kitchen">&nbsp;</td>
+<tr>&nbsp;<td>&nbsp;<td border="1" id="foyer">&nbsp;<td></td></tr>
+
+</table>
+
+<div id="message">
+
+</div>
+<form action="javascript:Zork();">
+<input type="text" name="command" id="command"></input>
+<input type="submit" id="submit" name="submit">
+<img src="http://images.clipartpanda.com/death-clipart-tombstone-clipart.gif" alt="Game over. Dude." height="50"></img>
+</form>
+<h2>Your moves:</h2>
+<textarea id="moves" rows="6" cols="50">
+</textarea>
+</body>
+</html>
